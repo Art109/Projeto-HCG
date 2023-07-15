@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField]float speed, vida, dano;
+    [SerializeField]protected float speed, vida, dano;
     Transform playerTransform;
 
     private void Start()
@@ -19,18 +19,12 @@ public class Enemy : MonoBehaviour
         Movement();
     }
 
-    void Movement() 
-    { 
-        if(playerTransform.gameObject != null)
+    public void Movement() 
+    {
+        if (GameObject.FindGameObjectWithTag("Player") != null)
         {
-            if (playerTransform.position != this.transform.position)
-            {
-
-                transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
-
-            }
+            transform.position = Vector2.MoveTowards(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position, speed * Time.deltaTime);
         }
-        
     }
 
  
