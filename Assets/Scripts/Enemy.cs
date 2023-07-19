@@ -5,19 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField]protected float speed, vida, dano;
-    Transform playerTransform;
+    [SerializeField]protected float speed, dano;
+    public int life;
 
-    private void Start()
-    {
-            playerTransform = GameObject.FindGameObjectWithTag("Player").transform ;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Movement();
-    }
 
     public void Movement() 
     {
@@ -26,6 +17,16 @@ public class Enemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(this.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position, speed * Time.deltaTime);
         }
     }
+
+    public void Die() 
+    { 
+        if(life <= 0) 
+        { 
+            Destroy(gameObject);
+        }
+    }
+
+
 
  
 }

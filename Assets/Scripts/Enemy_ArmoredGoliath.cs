@@ -14,5 +14,7 @@ public class Enemy_ArmoredGoliath : Enemy
     void Update()
     {
         Movement();
+
+        Die();
     }
 }
